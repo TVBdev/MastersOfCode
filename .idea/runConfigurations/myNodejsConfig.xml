@@ -1,8 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="myNodejsConfig" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/bin/node" path-to-js-file="nodetest.js" working-dir="$PROJECT_DIR$">
-    <browser start="true" url="http://0.0.0.0:3000" />
+  <configuration default="false" name="myNodejsConfig" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="server/testincClients.js" working-dir="$PROJECT_DIR$">
+    <browser start="true" with-js-debugger="true" url="http://0.0.0.0:3000" />
     <RunnerSettings RunnerId="Basic" />
+    <RunnerSettings RunnerId="debuggableProgram" />
     <ConfigurationWrapper RunnerId="Basic" />
+    <ConfigurationWrapper RunnerId="debuggableProgram" />
     <method />
   </configuration>
 </component>
