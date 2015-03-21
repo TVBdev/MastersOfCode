@@ -55,10 +55,15 @@ var cardAcceptor = {
   Country: "USA"
 };
 
+var transactionRef = '';
+for (var i = 0; i <19; i++) {
+  transactionRef = transactionRef.concat(String(Math.floor(Math.random() * 9) + 1));
+}
+
 masterCardClient.sendMoneyTransfer(
   "0612",
   "161222",
-  "52000000010101412583",
+  transactionRef,
   "John Doe",
   senderAddress,
   fundingCard,

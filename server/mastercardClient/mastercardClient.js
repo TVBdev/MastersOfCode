@@ -79,32 +79,26 @@ var sendMoneyTransfer = function(
   // Set the request body
   var xmlRequestBody = js2xmlparser("TransferRequest", jsonRequestBody);
 
-  // Configure the request
   var options = {
-    hostName: 'http://dmartin.org',
+    hostname: 'dmartin.org',
     port: 8021,
     path: '/moneysend/v2/transfer',
     method: 'POST',
     headers: {
-      'content-type':       'application/xml',
-      'content-length':     Buffer.byteLength(xmlRequestBody)
+      'Content-Type': 'application/xml',
+      'Content-Length': xmlRequestBody.length
     }
   };
-
-  //var request = require('request');
-  //request.post('http://dmartin.org:8021', function (error, response, body) {
-  //  if (!error && response.statusCode == 200) {
-  //    console.log(body) // Show the HTML for the Google homepage.
-  //  }
-  //})
 
   var http = require('http');
 
   var req = http.request(options, function(res) {
     console.log('STATUS: ' + res.statusCode);
-    //res.on('data', function (chunk) {
-    //  console.log('BODY: ' + chunk);
-    //});
+    console.log('HEADERS: ' + JSON.stringify(res.headers));
+    res.setEncoding('utf8');
+    res.on('data', function (chunk) {
+      console.log('BODY: ' + chunk);
+    });
   });
 
   req.on('error', function(e) {
