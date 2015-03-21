@@ -3,6 +3,7 @@ Parse.initialize("uRFo3EZW15ZznHafchLWav3vDcp5A7XHNz7JdbZ1", "829HRRpM4DayTgNKtq
 
 var Users = Parse.Object.extend("Users");
 var Events = Parse.Object.extend("Events");
+var User = Parse.Object.extend("User");
 
 var saveUser = function (name, fbKey) {
   var user = new Users();
@@ -37,10 +38,24 @@ var getEvents = function (userId){
   query.equalTo("userId", userId);
   return query.find();
 }
+var getUserEvents = function(objectId){
+  var query = new Parse.Query(User);
+  query.equalTo("objectId",objectId);
+   query.find({
+     success: function(results) {
+       var fbApiCall = require("facebookClient/facebookClient")
+       //fbApiCall.getUserEvents(results.)
+     },
+     error: function(error) {
+       alert("Error: " + error.code + " " + error.message);
+     }
+   });
+}
 
 
 exports.saveUser = saveUser;
 exports.getUser = getUser;
+exports.getUserEvents = getUserEvents;
 
 exports.saveEvent = saveEvent;
 exports.getEvents = getEvents;

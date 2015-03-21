@@ -79,10 +79,11 @@
     });
 
 
-    Parse.FacebookUtils.logIn(null, {
+    Parse.FacebookUtils.logIn("user_about_me", {
       success: function(user) {
         if (!user.existed()) {
           alert("User signed up and logged in through Facebook!");
+          //console.log(user);
         } else {
           alert("User logged in through Facebook!");
         }
