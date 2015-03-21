@@ -1,16 +1,84 @@
 
 
 
-var parseClient = require('./parseClient/parseClient');
+//var parseClient = require('./parseClient/parseClient');
+var masterCardClient = require('./masterCardClient/masterCardClient');
 
 //parseClient.saveUser("bambi3", "tahaFbKeyyyyyy").then(function(user){
 //    console.log(user.id)
 //  }
 //)
 
+//master
 
+var senderAddress = {
+  Line1: "123 Main Street",
+  City: "Arlington",
+  CountrySubdivision: "VA",
+  PostalCode: "22207",
+  Country: "USA"
+};
 
-parseClient.getUser("bambi").then(function(user){
+var fundingCard = {
+  AccountNumber: "5184680430000014",
+  ExpiryMonth: "11",
+  ExpiryYear: "2015"
+};
+
+var fundingAmount = {
+  Value: "15001",
+  Currency: "840"
+};
+
+var receiverAddress = {
+  Line1: "Pueblo Street",
+  City: "El PASO",
+  CountrySubdivision: "TX",
+  PostalCode: "79906",
+  Country: "USA"
+};
+
+var receivingCard = {
+  AccountNumber: "5184680430000006"
+};
+
+var receivingAmount = {
+  Value: "182206",
+  Currency: "484"
+};
+
+var cardAcceptor = {
+  Name: "My Local Bank",
+  City: "Saint Louis",
+  State: "MO",
+  PostalCode: "63101",
+  Country: "USA"
+};
+
+masterCardClient.sendMoneyTransfer(
+  "0612",
+  "161222",
+  "52000000010101412583",
+  "John Doe",
+  senderAddress,
+  fundingCard,
+  "123456",
+  fundingAmount,
+  "Jose Lopez",
+  receiverAddress,
+  receivingCard,
+  receivingAmount,
+  "W",
+  "true",
+  "009674",
+  "9000000442",
+  "990442082",
+  cardAcceptor,
+  "P2P",
+  "123456"
+);
+
+/*parseClient.getUser("bambi").then(function(user){
 
   parseClient.getEvents(user.id).then(function(results){
 
@@ -32,7 +100,7 @@ parseClient.getUser("bambi").then(function(user){
   //  console.log(event.id);
   //})
 
-})
+})*/
 
 
 
